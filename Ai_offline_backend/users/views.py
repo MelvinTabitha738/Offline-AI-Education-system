@@ -33,7 +33,7 @@ class StudentView(APIView):
     
 class TeacherView(APIView):
     permission_classes = [IsTeacher]
-    def get(self,reuest):
+    def get(self,request):
         return Response({"message":"Welcome,admin"})
     
 class AdminView(APIView):
