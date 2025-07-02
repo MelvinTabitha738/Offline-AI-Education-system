@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
 from . models import CustomUser
+from django.http import HttpResponse
 from . serializers import RegisterSerializers
 from rest_framework.permissions import AllowAny
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -9,6 +10,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .permissions import IsAdmin,IsStudent,IsTeacher
 # Create your views here.
+
 
 class RegisterView(generics.CreateAPIView):
     queryset=CustomUser.objects.all()
