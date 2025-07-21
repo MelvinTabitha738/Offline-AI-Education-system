@@ -1,0 +1,535 @@
+/* SelectRolePage.module.css */
+
+/* Container & Layout */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #F5F7FA 0%, #E8F4FD 100%);
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* Animated Background */
+.backgroundPattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.circle1 {
+  position: absolute;
+  top: -3rem;
+  right: -3rem;
+  width: 12rem;
+  height: 12rem;
+  background: linear-gradient(135deg, #1F4E79 0%, #4B0082 100%);
+  border-radius: 50%;
+  opacity: 0.1;
+  animation: float 6s ease-in-out infinite;
+}
+
+.circle2 {
+  position: absolute;
+  bottom: -6rem;
+  left: -6rem;
+  width: 18rem;
+  height: 18rem;
+  background: linear-gradient(135deg, #00C4CC 0%, #D81B60 100%);
+  border-radius: 50%;
+  opacity: 0.08;
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+.circle3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 9rem;
+  height: 9rem;
+  background: linear-gradient(135deg, #4B0082 0%, #00C4CC 100%);
+  border-radius: 50%;
+  opacity: 0.05;
+  animation: float 10s ease-in-out infinite;
+  transform: translate(-50%, -50%);
+}
+
+/* Header Section */
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slideIn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+
+.welcomeSection {
+  max-width: 40rem;
+ margin-top: 50px;
+}
+
+.welcome {
+  font-size: 1.875rem;
+  font-weight: 600;
+  color: #212121;
+  margin-bottom: 0.75rem;
+}
+
+.instruction {
+  font-size: 1.125rem;
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Cards Section */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+  gap: 2rem;
+  max-width: 75rem;
+  width: 100%;
+  margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+}
+
+.cardsAnimation {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card {
+  background: #FFFFFF;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+  box-shadow: 0 0.25rem 1.5rem rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0);
+  opacity: 0;
+  animation: cardSlideIn 0.6s ease-out forwards;
+  animation-delay: var(--animation-delay);
+}
+
+.card:hover {
+  transform: translateY(-0.5rem) scale(1.02);
+  box-shadow: 0 0.75rem 3rem rgba(0, 0, 0, 0.15);
+}
+
+.card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.card:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.card:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+.selected {
+  border-color: var(--role-color);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.95) 100%);
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.12), 0 0 0 1px var(--role-color);
+  transform: translateY(-0.25rem) scale(1.05);
+}
+
+.selectedIndicator {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  width: 3rem;
+  height: 3rem;
+  background: var(--role-gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.125rem;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+/* Card Content */
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.iconWrapper {
+  width: 4rem;
+  height: 4rem;
+  background: var(--role-gradient);
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .iconWrapper {
+  transform: scale(1.1);
+}
+
+.roleInfo {
+  flex: 1;
+}
+
+.roleName {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #212121;
+  margin: 0 0 0.5rem 0;
+}
+
+.roleDescription {
+  font-size: 1rem;
+  color: #6b7280;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(245, 247, 250, 0.8);
+  border-radius: 0.75rem;
+  border-left: 3px solid var(--role-color);
+  transition: all 0.3s ease;
+}
+
+.feature:hover {
+  background: rgba(245, 247, 250, 1);
+  transform: translateX(0.25rem);
+}
+
+.featureIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 0.375rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--role-color);
+  flex-shrink: 0;
+}
+
+.featureText {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid #E5E7EB;
+}
+
+.selectText {
+  font-weight: 600;
+  color: var(--role-color);
+  font-size: 1rem;
+}
+
+.chevron {
+  color: var(--role-color);
+  transition: transform 0.3s ease;
+}
+
+.chevronRotated {
+  transform: rotate(90deg);
+}
+
+/* Action Buttons */
+.actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.6s;
+}
+
+.actionsAnimation {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  min-width: 11.25rem;
+  justify-content: center;
+  font-family: inherit;
+}
+
+.backButton {
+  background: #F5F7FA;
+  color: #6b7280;
+  border: 2px solid #E5E7EB;
+}
+
+.backButton:hover:not(:disabled) {
+  background: #E5E7EB;
+  color: #374151;
+  transform: translateY(-0.125rem);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.backButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.continueButton {
+  background: linear-gradient(135deg, #1F4E79 0%, #4B0082 100%);
+  color: white;
+  box-shadow: 0 0.25rem 1rem rgba(31, 78, 121, 0.3);
+}
+
+.continueButton:hover:not(:disabled) {
+  box-shadow: 0 0.5rem 2rem rgba(31, 78, 121, 0.4);
+  transform: translateY(-0.125rem) scale(1.05);
+}
+
+.continueButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Footer */
+.footer {
+  margin-top: 2rem;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.875rem;
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.8s;
+}
+
+.footerAnimation {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Success Page */
+.successContainer {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.successCard {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.1);
+  max-width: 28rem;
+  width: 100%;
+  animation: successSlideIn 0.6s ease-out;
+}
+
+.successIcon {
+  width: 4rem;
+  height: 4rem;
+  background: #10b981;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.successTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.successMessage {
+  color: #6b7280;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.progressBar {
+  width: 100%;
+  background: #e5e7eb;
+  border-radius: 9999px;
+  height: 0.5rem;
+  overflow: hidden;
+}
+
+.progressFill {
+  background: #10b981;
+  height: 100%;
+  border-radius: 9999px;
+  width: 100%;
+  animation: progressAnimation 2s ease-in-out;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-1.25rem);
+  }
+}
+
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(1.875rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes successSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(1.875rem) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes progressAnimation {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .content {
+    padding: 1rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .welcome {
+    font-size: 1.5rem;
+  }
+  
+  .instruction {
+    font-size: 1rem;
+  }
+  
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .card {
+    padding: 1.5rem;
+  }
+  
+  .actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardHeader {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .roleInfo {
+    text-align: center;
+  }
+  
+  .features {
+    align-items: center;
+  }
+  
+  .feature {
+    justify-content: center;
+  }
+}

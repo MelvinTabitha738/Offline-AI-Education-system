@@ -1,0 +1,39 @@
+
+.app {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  background-color: #F5F7FA;
+}
+/* Offline Indicator */
+        /* .offlinebadge {
+            position: fixed;
+            bottom: 40px;
+            left: 30px;
+            background-color:#10b981;
+            color: #F5F7FA;
+            padding: 10px 16px;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            z-index: 1000;
+        }
+
+        .offlinebadge::before {
+            content: '●';
+            animation: pulse 2s infinite;
+        } */
+        /* Animations */
+        /* @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .loading {
+            animation: pulse 1s infinite;
+        } */
